@@ -18,10 +18,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(require('./controllers/'));
 
-<<<<<<< HEAD
-//app.use(controllers);
-=======
->>>>>>> 3caa9ba851ea38f629162e2340848f078cdf273d
 
 
 sequelize.sync({force:false}).then(() => {
