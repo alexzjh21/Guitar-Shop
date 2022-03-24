@@ -1,0 +1,22 @@
+{
+  "name": "guitar-shop",
+  "version": "1.0.0",
+  "description": "Project name: Guitar Shop",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "seed": "node seeds/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hannahhan153/guitar-shop.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hannahhan153/guitar-shop/issues"
+  },
+  "homepage": "https://github.com/hannahhan153/guitar-shop#readme"
+}

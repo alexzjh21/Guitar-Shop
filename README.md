@@ -1,4 +1,4 @@
-# guitar-shop
+# Guitar Shop 
 
 Project name: Guitar Shop
 
@@ -7,4 +7,4 @@ Description:
 
 
 
-Screenshot:
+Screenshots:
