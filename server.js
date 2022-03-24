@@ -7,8 +7,12 @@ const PORT = process.env.PORT || 3001;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(require('./controllers/'));
 
+<<<<<<< HEAD
 //app.use(controllers);
+=======
+>>>>>>> 3caa9ba851ea38f629162e2340848f078cdf273d
 
 
 sequelize.sync({force:false}).then(() => {
