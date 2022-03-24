@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class User extends Model {}
+class Guitar extends Model {}
 
-User.init(
+Guitar.init(
     {
         id: {
             type:DataTypes.INTEGER,
@@ -11,33 +11,34 @@ User.init(
             primaryKey: true,
             autoIncrement: true
         },
-        username: {
+        guitar_type: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        email: {
+        guitar_brand: {
             type: DataTypes.STRING,
+            allowNull: false
+        },
+        price: {
+            type: DataTypes.DECIMAL(10,2),
             allowNull: false,
-            unique: true,
             validate: {
-                isEmail: true
+                isDecimal: true
             }
         },
-        password: {
+        comment_text: {
             type: DataTypes.STRING,
             allowNull: false,
-            validate: {
-                len: [4]
-            }
         }
     },
     {
-        sequelize,
-        timestamps: false,
-        freezeTableName: true,
-        underscored: true,
-        modelName: 'user' 
+     sequelize,
+    timestamps: false,
+    freezeTableName: true,
+    underscored: true,
+    modelName: 'Guitar',
     }
 );
 
-module.exports = User;
+
+module.exports = Guitar;
