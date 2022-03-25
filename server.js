@@ -13,7 +13,7 @@ const sequelize = require('./config/connection');
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
-
+app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(require('./controllers/'));
