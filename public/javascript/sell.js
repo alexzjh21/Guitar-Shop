@@ -18,6 +18,11 @@ async function sellFormHandler (event) {
           headers: { 'Content-Type': 'application/json' }
         });
     }
+    if (response.ok) {
+      document.location.replace('/');
+    } else {
+      alert(response.statusText);
+    }
 }
 
 document.querySelector('#sell-button').addEventListener('submit', sellFormHandler);
