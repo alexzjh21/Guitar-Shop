@@ -58,6 +58,25 @@ router.post('/', (req, res) => {
         console.log(err);
         res.status(500).json(err);
     })
-})
+});
+
+router.delete('/:id', (req, res) => {
+    Guitar.destroy({
+      where: {
+        id: req.params.id
+      }
+    })
+      .then(dbGuitarData => {
+        if (!dbGuitarData) {
+          res.status(404).json({ message: 'No post found with this id' });
+          return;
+        }
+        res.json(dbGuitarData);
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  });
 
 module.exports = router;
