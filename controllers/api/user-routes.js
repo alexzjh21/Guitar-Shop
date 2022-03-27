@@ -3,8 +3,8 @@ const router = require('express').Router();
 const User = require('../../models/User');
 
 router.get('/', (req, res) => {
-    User.findAll({
-        attributes: { exclude: ['password'] }
+    User.findAll
+    ({attributes: { exclude: ['password'] }
     })
         .then(dbUserData => res.json(dbUserData))
         .catch(err => {
