@@ -1,5 +1,6 @@
 const router = require('express').Router();
 //const {Guitar} = require('../../models');
+const withAuth = require('../../utils/withAuth');
 const Guitar = require('../../models/Guitar');
 
 
@@ -46,7 +47,7 @@ router.get('/:id', (req, res) => {
     })
 });
 
-router.post('/', (req, res) => {
+router.post('/', withAuth, (req, res) => {
     Guitar.create({
         guitar_type: req.body.guitar_type,
         guitar_brand: req.body.guitar_brand,
@@ -60,7 +61,7 @@ router.post('/', (req, res) => {
     })
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', withAuth, (req, res) => {
     Guitar.destroy({
       where: {
         id: req.params.id
