@@ -1,5 +1,6 @@
 const router = require('express').Router();
 //const {Guitar} = require('../../models');
+const withAuth = require('../../utils/withAuth');
 const Guitar = require('../../models/Guitar');
 
 
@@ -46,7 +47,7 @@ router.get('/:id', (req, res) => {
     })
 });
 
-router.post('/', (req, res) => {
+router.post('/', withAuth, (req, res) => {
     Guitar.create({
         guitar_type: req.body.guitar_type,
         guitar_brand: req.body.guitar_brand,
@@ -58,6 +59,25 @@ router.post('/', (req, res) => {
         console.log(err);
         res.status(500).json(err);
     })
-})
+});
+
+router.delete('/:id', withAuth, (req, res) => {
+    Guitar.destroy({
+      where: {
+        id: req.params.id
+      }
+    })
+      .then(dbGuitarData => {
+        if (!dbGuitarData) {
+          res.status(404).json({ message: 'No post found with this id' });
+          return;
+        }
+        res.json(dbGuitarData);
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  });
 
 module.exports = router;
