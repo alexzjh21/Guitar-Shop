@@ -15,6 +15,7 @@ router.get('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
     User.findOne({
+        // protect the password
         attributes: { exclude: ['password'] },
         where: {
             id: req.params.id
@@ -44,7 +45,6 @@ router.post('/', (req, res) => {
             res.status(500).json(err);
         });
 });
-// post route for login
 
 // update the password
 router.put('/:id', (req, res) => {
@@ -54,6 +54,17 @@ router.put('/:id', (req, res) => {
             id: req.params.id
         }
     })
-})
+    .then(dbUserData => {
+        if (!dbUserData[0]) {
+            res.status(404).json({ message: 'No user found with this id' });
+            return;
+        }
+        res.json(dbUserData);
+    })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        })
+    });
 
 module.exports = router;
