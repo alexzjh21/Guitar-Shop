@@ -14,6 +14,13 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
+    if(!req.session.views){
+        req.session.views = 1;
+        console.log("this is your first visit");
+    } else {
+        req.session.views++
+        console.log(`You have visited ${req.session.views} times`)
+    }
     User.findOne({
         // protect the password
         attributes: { exclude: ['password'] },

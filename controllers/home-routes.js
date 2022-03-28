@@ -52,4 +52,12 @@ router.get('/', (req, res) => {
     res.render('main')
   })
 
+  router.get('/sell', (req, res) => {
+    res.render('sell')
+  })
+
+  router.get('/sign-up', (req, res) => {
+    res.render('sign-up')
+  })
+
   module.exports = router;
