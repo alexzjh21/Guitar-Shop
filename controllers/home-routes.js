@@ -2,6 +2,7 @@ const router = require('express').Router();
 const sequelize = require('../config/connection');
 const Guitar = require('../models/Guitar')
 router.get('/', (req, res) => {
+  console.log(req.session);
     Guitar.findAll({
       attributes: [
         'id',
@@ -38,6 +39,12 @@ router.get('/', (req, res) => {
   });
   
   router.get('/login', (req, res) => {
+    // check for session and redirect to homepage if one exists
+    if (req.session.loggedIn) {
+      res.redirect('/');
+      return;
+    }
+
     res.render('login');
   });
 
