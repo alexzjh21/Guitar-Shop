@@ -2,7 +2,7 @@ const express = require('express');
 //const routes = require('./routes');
 const exphbs = require('express-handlebars');
 const hbs = exphbs.create({});
-
+const https = require("https")
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -24,3 +24,8 @@ sequelize.sync({force:false}).then(() => {
     console.log(`App listening on port ${PORT}!`);
   });
 });
+
+//api key
+//503ab8adbbb760ceb95c8f074f106e2c-us10
+//list id
+//7fbc658dc5
