@@ -25,4 +25,4 @@ async function sellFormHandler (event) {
     }
 }
 
-document.querySelector('#sell-button').addEventListener('submit', sellFormHandler);
+document.querySelector('.sell-form').addEventListener('submit', sellFormHandler);
