@@ -1,5 +1,3 @@
-const faker = require('faker');
-// const fs = require('fs');
 const express = require('express');
 //const routes = require('./routes');
 const session = require('express-session');
