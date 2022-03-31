@@ -25,6 +25,60 @@
   margin-right: 20px;
 }
 
+.signup-form {
+  padding-top: 25px;
+  padding-bottom: 25px;
+  padding-left: 50px;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.user-input {
+  padding-top: 25px;
+
+}
+
+.email-input {
+  padding-top: 25px;
+}
+
+.pw-input {
+  padding-top: 25px;
+}
+
+.signup-btn {
+  font-size: 24;
+  border-radius: 12px;
+  background-color: #212529;
+  color: white;
+
+}
+
+.btn-div {
+  padding-top: 25px;
+  padding-left: 400px;
+}
+
+.align-user {
+  padding-right: 25px;
+}
+
+.align-email {
+  padding-right: 80px;
+}
+
+.align-pw {
+  padding-right: 30px;
+}
+
+.input {
+  border-radius: 12px;
+}
+
+
+
+
+
 
 
 
