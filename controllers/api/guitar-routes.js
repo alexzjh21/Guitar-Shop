@@ -81,13 +81,5 @@ router.delete('/:id',  (req, res) => {
       });
   });
 
-router.post('/sell', (req, res) => {
-    Guitar.create({
-        guitar_type: req.body.guitar_type,
-        guitar_brand: req.body.guitar_brand,
-        price: req.body.price,
-        comment_text: req.body.comment_text
-    })
-})
 
 module.exports = router;
