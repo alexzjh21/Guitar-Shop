@@ -94,6 +94,52 @@
   color: white;
 }
 
+/* styles for sell */
+
+.sell-form {
+  padding-top: 25px;
+  padding-bottom: 25px;
+  padding-left: 50px;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.align-brand {
+  padding-right: 25px;
+}
+
+.align-price {
+  padding-right: 107px;
+}
+
+.type-input {
+  padding-top: 25px;
+}
+
+.brand-input {
+  padding-top: 25px;
+}
+
+.desc-input {
+  padding-top: 25px;
+}
+
+.price-input {
+  padding-top: 25px;
+}
+
+.sell-btn {
+  font-size: 24;
+  border-radius: 12px;
+  background-color: #212529;
+  color: white;
+}
+
+.btn-div-sell {
+  padding-top: 25px;
+  padding-left: 600px;
+}
+
 
 
 
