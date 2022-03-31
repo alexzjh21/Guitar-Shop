@@ -28,13 +28,15 @@ router.get('/', (req, res) => {
       //   ]
     })
     .then(dbGuitarData => {
-      const guitars = dbGuitarData.map(guitar => guitar.get({
-        plain: true
-      }));
 
+      const guitars = dbGuitarData.map(guitar => guitar.get({ plain: true }));
+  
       res.render('guitarsection', {
-        guitars
+        guitars,
+        isLoggedIn: req.session.loggedIn
+
       });
+      
 
     })
     .catch(err => {
