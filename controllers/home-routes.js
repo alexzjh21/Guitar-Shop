@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
 const Guitar = require('../models/Guitar')
+const withAuth = require('../utils/withAuth');
 router.get('/', (req, res) => {
   console.log(req.session);
     Guitar.findAll({
@@ -52,7 +53,7 @@ router.get('/', (req, res) => {
     res.render('main')
   })
 
-  router.get('/sell', (req, res) => {
+  router.get('/sell', withAuth, (req, res) => {
     res.render('sell')
   })
 
