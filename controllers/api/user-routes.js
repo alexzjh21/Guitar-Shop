@@ -3,9 +3,11 @@ const router = require('express').Router();
 const User = require('../../models/User');
 
 router.get('/', (req, res) => {
-    User.findAll
-    ({attributes: { exclude: ['password'] }
-    })
+    User.findAll({
+            attributes: {
+                exclude: ['password']
+            }
+        })
         .then(dbUserData => res.json(dbUserData))
         .catch(err => {
             console.log(err);
@@ -14,7 +16,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-    if(!req.session.views){
+    if (!req.session.views) {
         req.session.views = 1;
         console.log("this is your first visit");
     } else {
@@ -22,15 +24,19 @@ router.get('/:id', (req, res) => {
         console.log(`You have visited ${req.session.views} times`)
     }
     User.findOne({
-        // protect the password
-        attributes: { exclude: ['password'] },
-        where: {
-            id: req.params.id
-        }
-    })
+            // protect the password
+            attributes: {
+                exclude: ['password']
+            },
+            where: {
+                id: req.params.id
+            }
+        })
         .then(dbUserData => {
-            if(!dbUserData) {
-                res.status(404).json({message: 'No user found with this id'})
+            if (!dbUserData) {
+                res.status(404).json({
+                    message: 'No user found with this id'
+                })
             }
             res.json(dbUserData);
         })
@@ -42,10 +48,10 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
     User.create({
-        username: req.body.username,
-        email: req.body.email,
-        password: req.body.password
-    })
+            username: req.body.username,
+            email: req.body.email,
+            password: req.body.password
+        })
         .then(dbUserData => {
             req.session.save(() => {
                 req.session.user_id = dbUserData.id;
@@ -54,10 +60,21 @@ router.post('/', (req, res) => {
 
                 res.json(dbUserData);
             });
-        })
+        }) 
+        .then(dbUserData => {
+            req.session.save(() => {
+                req.session.user_id = dbUserData.id;
+                req.session.username = dbUserData.username;
+                req.session.loggedIn = true;
+
+                res.json(dbUserData);
+            });
+        }).then(dbUserData => res.json(dbUserData))
         .catch(err => {
             console.log(err);
             res.status(500).json(err);
+
+
         });
 });
 
@@ -70,17 +87,18 @@ router.post('/login', (req, res) => {
     }).then(dbUserData => {
         console.log(dbUserData)
         if (!dbUserData) {
-            res.status(400).json({ message: 'No user with that email address! '});
+            res.status(400).json({
+                message: 'No user with that email address! '
+            });
             return;
         }
 
-        // res.json({ user: dbUserData });
-
-        // Verify user
         const validPassword = dbUserData.checkPassword(req.body.password);
         console.log(validPassword);
         if (!validPassword) {
-            res.status(400).json({ message: 'Incorrect password!' });
+            res.status(400).json({
+                message: 'Incorrect password!'
+            });
             return;
         }
 
@@ -89,40 +107,47 @@ router.post('/login', (req, res) => {
             req.session.username = dbUserData.username;
             req.session.loggedIn = true;
 
-            res.json({ user: dbUserData, message: 'You are now logged in!' });
-        });
+            res.json({
+                user: dbUserData,
+                message: 'You are now logged in!'
+            });
+        })
+
     });
 });
+
+
 
 router.post('/logout', (req, res) => {
     if (req.session.loggedIn) {
         req.session.destroy(() => {
             res.status(204).end();
         });
-    }
-    else {
+    } else {
         res.status(404).end();
-}
+    }
 });
 // update the password
 router.put('/:id', (req, res) => {
     User.update(req.body, {
-        individualHooks: true,
-        where: {
-            id: req.params.id
-        }
-    })
-    .then(dbUserData => {
-        if (!dbUserData[0]) {
-            res.status(404).json({ message: 'No user found with this id' });
-            return;
-        }
-        res.json(dbUserData);
-    })
+            individualHooks: true,
+            where: {
+                id: req.params.id
+            }
+        })
+        .then(dbUserData => {
+            if (!dbUserData[0]) {
+                res.status(404).json({
+                    message: 'No user found with this id'
+                });
+                return;
+            }
+            res.json(dbUserData);
+        })
         .catch(err => {
             console.log(err);
             res.status(500).json(err);
         })
-    });
+});
 
 module.exports = router;

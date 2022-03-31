@@ -47,7 +47,7 @@ router.get('/:id', (req, res) => {
     })
 });
 
-router.post('/', withAuth, (req, res) => {
+router.post('/', (req, res) => {
     Guitar.create({
         guitar_type: req.body.guitar_type,
         guitar_brand: req.body.guitar_brand,
@@ -61,7 +61,7 @@ router.post('/', withAuth, (req, res) => {
     })
 });
 
-router.delete('/:id', withAuth, (req, res) => {
+router.delete('/:id',  (req, res) => {
     Guitar.destroy({
       where: {
         id: req.params.id
