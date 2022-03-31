@@ -11,7 +11,7 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 
-
+/* styles for homepage */
 .logout-btn {
   background-color: #212529;
   text-align: center;
@@ -24,6 +24,8 @@
   border: 2px, solid, lightgrey;
   margin-right: 20px;
 }
+
+/* styles for sign-up */
 
 .signup-form {
   padding-top: 25px;
@@ -73,6 +75,23 @@
 
 .input {
   border-radius: 12px;
+}
+
+/* styles for login */
+
+.login-form {
+  padding-top: 25px;
+  padding-bottom: 25px;
+  padding-left: 50px;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.login-btn {
+  font-size: 24;
+  border-radius: 12px;
+  background-color: #212529;
+  color: white;
 }
 
 
