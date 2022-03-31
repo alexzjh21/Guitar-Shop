@@ -61,4 +61,8 @@ router.get('/', (req, res) => {
     res.render('sign-up')
   })
 
+  router.get('/cart', (req, res) => {
+    res.render('cart')
+  })
+
   module.exports = router;
