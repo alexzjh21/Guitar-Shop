@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "seed": "node seeds/index.js",
-    "heroku-postbuild": "node seeds/index.js"
+    "heroku-postbuild": "node seeds/index.js",
+    "watch": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -22,9 +23,14 @@
   "homepage": "https://github.com/hannahhan153/guitar-shop#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "connect-session-sequelize": "^7.1.2",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "express-handlebars": "^6.0.3",
+    "express-session": "^1.17.2",
+    "faker": "^5.5.3",
+    "g": "^2.0.1",
+    "json-server": "^0.17.0",
     "mysql2": "^2.3.3",
     "sequelize": "^6.17.0"
   }

@@ -1,25 +1,27 @@
 <form class="sell-form">
-  <div>
+  <div class="type-input" type-input>
     <label for="guitar-type">Choose a type:</label>
-    <select id="guitar-type">
+    <select class="input" id="guitar-type">
         <option value="acoustic">Acoustic Guitar</option>
         <option value="electric">Electric Guitar</option>
         <option value="bass">Bass</option>
     </select>
-
-    <label for="guitar-brand">Enter the brand of the guitar:</label>
-    <input type="text" id="guitar-brand" />
-
-    <label for="description">Enter a desription of the guitar</label>
-    <input type="text" id="description" />
-
-    <label for="price">Your ask for the price</label>
-    <input type="number" id="price" min="0.01"/>
   </div>
-  
-  <div>
-    <button type="submit" id="sell-button">Look for a new owner!</button>
+  <div class="brand-input">
+    <label class="align-brand" for="guitar-brand">Enter the brand of the guitar:</label>
+    <input class="input" type="text" id="guitar-brand" />
+  </div>
+  <div class="desc-input">
+    <label for="description">Enter a desription of the guitar: </label>
+    <input class="input" type="text" id="description" />
+  </div>
+  <div class = "price-input">
+    <label class="align-price" for="price">Your ask for the price: </label>
+    <input class="input" type="number" id="price" min="0.01"/>
+  </div>
+  <div class="btn-div-sell">
+    <button class="sell-btn" type="submit" id="sell-button">Look for a new owner!</button>
   </div>
 </form>
 
-<script src="/javascript/sell.js"></script>
+<script src="./javascript/sell.js"></script>
